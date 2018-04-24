@@ -11,5 +11,8 @@
                  [ring/ring-core "1.6.3"]
                  [ring/ring-json "0.4.0"]]
   :dev-dependencies [[ring/ring-devel "1.6.3"]]
-  :plugins [[lein-ring "0.12.4"]]
-  :ring {:handler hacker-news-clone.core/app})
+  :plugins [[cider/cider-nrepl "0.16.0"]
+            [lein-ring "0.12.4"]
+            [lein-datomic "0.2.0"]]
+  :ring {:handler hacker-news-clone.core/app}
+  :jvm-opts [])

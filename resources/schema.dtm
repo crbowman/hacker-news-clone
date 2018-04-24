@@ -1,0 +1,144 @@
+
+[
+ ;; comment attributes
+ {:db/id  #db/id[:db.part/db]
+  :db/ident  :comment/uuid
+  :db/valueType  :db.type/uuid
+  :db/cardinality  :db.cardinality/one
+  :db/unique  db.unique/identity
+  :db/doc  "The body of a comment"
+  :db.install/_attribute  :db.part/db}
+
+ {:db/id  #db/id[:db.part/db]
+  :db/ident  :comment/body
+  :db/valueType  :db.type/string
+  :db/cardinality  :db.cardinality/one
+  :db/doc  "The body of a comment"
+  :db.install/_attribute  :db.part/db}
+
+ {:db/id  #db/id[:db.part/db]
+  :db/ident  :comment/upvoted
+  :db/valueType  :db.type/boolean
+  :db/cardinality  :db.cardinality/one
+  :db/doc  "Has the current user upvoted this comment?"
+  :db.install/_attribute  :db.part/db}
+ 
+ {:db/id  #db/id[:db.part/db]
+  :db/ident  :comment/parent
+  :db/valueType  :db.type/bigint
+  :db/cardinality  :db.cardinality/one
+  :db/doc  "ID of the item to which the comment was made on"
+  :db.install/_attribute  :db.part/db}
+
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :comment/creation-time
+   :db/valueType  :db.type/instant
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "The time when the comment was submitted"
+   :db.install/_attribute  :db.part/db}
+
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :comment/submitter
+   :db/valueType  :db.type/ref
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "A reference to the user that sumbitted the comment"
+   :db.install/_attribute  :db.part/db}
+
+
+ ;;user attributes
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :user/username
+   :db/valueType  :db.type/string
+   :db/cardinality  :db.cardinality/one
+   :db/unique  :db.unique/identity
+   :db/doc  "A users unique username"
+   :db.install/_attribute  :db.part/db}
+
+   {:db/id  #db/id[:db.part/db]
+    :db/ident  :user/creation-time
+    :db/valueType  :db.type/instant
+    :db/cardinality  :db.cardinality/one
+    :db/doc  "Creation time of a user account"
+    :db.install/_attribute  :db.part/db}
+
+   {:db/id  #db/id[:db.part/db]
+    :db/ident  :user/email
+    :db/valueType  :db.type/string
+    :db/cardinality  :db.cardinality/one
+    :db/doc  "A users email address"
+    :db.install/_attribute  :db.part/db}
+
+
+ ;;news-item attributes
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/uuid
+   :db/valueType  :db.type/uuid
+   :db/cardinality  :db.cardinality/one
+   :db/unique  :db.unique/identity
+   :db/doc  "A news item's unique uuid"
+   :db.install/_attribute  :db.part/db}
+
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/comment-count
+   :db/valueType  :db.type/bigint
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "The number of comments on a news item"
+   :db.install/_attribute  :db.part/db}
+
+ {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/creation-time
+   :db/valueType  :db.type/instant
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "A news item's time of creation"
+  :db.install/_attribute  :db.part/db}
+
+ {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/title
+   :db/valueType  :db.type/string
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "The title of a news item"
+   :db.install/_attribute  :db.part/db}
+
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/hidden
+   :db/valueType  :db.type/boolean
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "Whether the currently logged in user has hidden the news item"
+   :db.install/_attribute  :db.part/db}
+
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/submitter
+   :db/valueType  :db.type/ref
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "A reference to the submitter of the news item"
+   :db.install/_attribute  :db.part/db}
+
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/upvoted
+   :db/valueType  :db.type/boolean
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "Whether the current user has upvoted the news item"
+   :db.install/_attribute  :db.part/db}
+
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/body
+   :db/valueType  :db.type/string
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "The body text of the news item"
+   :db.install/_attribute  :db.part/db}
+
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/upvote-count
+   :db/valueType  :db.type/bigint
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "The number of upvotes the news item has"
+   :db.install/_attribute  :db.part/db}
+
+  {:db/id  #db/id[:db.part/db]
+   :db/ident  :news-item/url
+   :db/valueType  :db.type/string
+   :db/cardinality  :db.cardinality/one
+   :db/doc  "The url of the news-item"
+   :db.install/_attribute  :db.part/db}
+
+]
